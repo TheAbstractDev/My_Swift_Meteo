@@ -15,6 +15,7 @@ class TodayViewController: UITableViewController, NCWidgetProviding {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    print("lol")
   }
   
   override func didReceiveMemoryWarning() {
