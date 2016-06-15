@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>My_Swift_Meteo Extension.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>My_Swift_Meteo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>D8B5D4081D0EC88C0031A48B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D8B5D4301D0ECB1C0031A48B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D8B5D4431D0ECBAA0031A48B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D8B5D4531D0ECBE50031A48B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D8C681EF1D09BB8500B1E6D7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D8D5176F1D0D849400796AD4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

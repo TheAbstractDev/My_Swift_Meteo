@@ -1,0 +1,6 @@
+framework module Pods_My_Swift_Meteo_Extension {
+  umbrella header "Pods-My_Swift_Meteo Extension-umbrella.h"
+
+  export *
+  module * { export * }
+}
