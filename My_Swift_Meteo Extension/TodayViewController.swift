@@ -32,7 +32,7 @@ class TodayViewController: UITableViewController, NCWidgetProviding {
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("resultCell", forIndexPath: indexPath)
+    let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
     cell.textLabel?.text = favorites[indexPath.row] as String
     return cell
   }
