@@ -101,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="1137" y="206"/>
         </scene>
-        <!--Table View Controller-->
+        <!--History View Controller-->
         <scene sceneID="QFO-cV-lM8">
             <objects>
-                <tableViewController id="4K8-3r-pKq" sceneMemberID="viewController">
+                <tableViewController id="4K8-3r-pKq" customClass="HistoryViewController" customModule="My_Swift_Meteo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="DjP-8Q-PKB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -221,6 +221,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="c1z-j1-J0h"/>
+        <segue reference="OWO-uV-Afk"/>
     </inferredMetricsTieBreakers>
 </document>

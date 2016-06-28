@@ -10,6 +10,7 @@
 		7D1CDB44C08F9DD544EC5F04 /* Pods_My_Swift_Meteo_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381BB456E9E02F9B13B3BAAD /* Pods_My_Swift_Meteo_Extension.framework */; };
 		7F80F8EB8400245C746E0017 /* Pods_My_Swift_Meteo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D371BBF4E65CEDB672152407 /* Pods_My_Swift_Meteo.framework */; };
 		D87C9C9B1D22860400CC782C /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87C9C9A1D22860400CC782C /* WeatherViewController.swift */; };
+		D87C9C9D1D2290C600CC782C /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87C9C9C1D2290C600CC782C /* HistoryTableViewController.swift */; };
 		D8B5D41A1D0EC8D50031A48B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B5D4191D0EC8D50031A48B /* LocationManager.swift */; };
 		D8B5D41D1D0EC8FA0031A48B /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B5D41C1D0EC8FA0031A48B /* WeatherManager.swift */; };
 		D8B5D4201D0EC9150031A48B /* SwiftyDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B5D41F1D0EC9150031A48B /* SwiftyDefaults.swift */; };
@@ -64,6 +65,7 @@
 		726A2FCBA6E2732B1FFE48A7 /* Pods-My_Swift_Meteo Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My_Swift_Meteo Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-My_Swift_Meteo Extension/Pods-My_Swift_Meteo Extension.release.xcconfig"; sourceTree = "<group>"; };
 		D371BBF4E65CEDB672152407 /* Pods_My_Swift_Meteo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_My_Swift_Meteo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D87C9C9A1D22860400CC782C /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		D87C9C9C1D2290C600CC782C /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		D8B5D4191D0EC8D50031A48B /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D8B5D41C1D0EC8FA0031A48B /* WeatherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		D8B5D41F1D0EC9150031A48B /* SwiftyDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyDefaults.swift; sourceTree = "<group>"; };
@@ -167,10 +169,11 @@
 				D8C681F31D09BB8500B1E6D7 /* AppDelegate.swift */,
 				D8C681F51D09BB8500B1E6D7 /* ViewController.swift */,
 				D87C9C9A1D22860400CC782C /* WeatherViewController.swift */,
+				D87C9C9C1D2290C600CC782C /* HistoryTableViewController.swift */,
+				D8C681FF1D09BB8500B1E6D7 /* Info.plist */,
 				D8C681F71D09BB8500B1E6D7 /* Main.storyboard */,
 				D8C681FA1D09BB8500B1E6D7 /* Assets.xcassets */,
 				D8C681FC1D09BB8500B1E6D7 /* LaunchScreen.storyboard */,
-				D8C681FF1D09BB8500B1E6D7 /* Info.plist */,
 			);
 			path = My_Swift_Meteo;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				D8B5D4261D0EC94E0031A48B /* FavoritesManager.swift in Sources */,
 				D8C681F41D09BB8500B1E6D7 /* AppDelegate.swift in Sources */,
 				D87C9C9B1D22860400CC782C /* WeatherViewController.swift in Sources */,
+				D87C9C9D1D2290C600CC782C /* HistoryTableViewController.swift in Sources */,
 				D8B5D41D1D0EC8FA0031A48B /* WeatherManager.swift in Sources */,
 				D8B5D41A1D0EC8D50031A48B /* LocationManager.swift in Sources */,
 			);
