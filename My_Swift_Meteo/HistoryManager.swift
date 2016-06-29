@@ -15,7 +15,7 @@ public class HistoryManager {
     var data = Array<String>()
     
     if history != nil {
-      var data = history as! Array<String>
+      data = history as! Array<String>
       data.append(c)
     } else {
       data.append(c)

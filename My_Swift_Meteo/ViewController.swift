@@ -27,6 +27,7 @@ class ViewController: UIViewController {
   }
 
   @IBAction func search(sender: AnyObject) {
+    HistoryManager.saveToSearchHistory(city: searchTextField.text!)
     dispatch_async(dispatch_get_main_queue(), {
       self.performSegueWithIdentifier("weatherBySearch", sender: nil)
     })
@@ -58,7 +59,6 @@ class ViewController: UIViewController {
       
       if identifier == "weatherBySearch" {
         if searchTextField.text != "" {
-          HistoryManager.saveToSearchHistory(city: searchTextField.text!)
           weatherManager.getWeatherDataFor(self.searchTextField.text!) { (data) in
             let temp = data["main"]["temp"].intValue
             let city = data["name"].stringValue

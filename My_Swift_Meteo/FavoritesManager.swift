@@ -14,7 +14,7 @@ public class FavoritesManager {
     var data = Array<String>()
     
     if favorites != nil {
-      var data = favorites as! Array<String>
+      data = favorites as! Array<String>
       data.append(city)
     } else {
       data.append(city)

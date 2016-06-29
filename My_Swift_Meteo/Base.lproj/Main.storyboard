@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <development version="7000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--My_Swift_Meteo-->
@@ -19,18 +20,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ville" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QlG-Jn-qsA">
-                                <rect key="frame" x="226" y="76" width="147" height="30"/>
+                                <rect key="frame" x="119" y="76" width="361" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="147" id="xrk-kX-bDj"/>
+                                    <constraint firstAttribute="width" constant="361" id="1jX-Qm-gSF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvH-3n-M4v">
-                                <rect key="frame" x="381" y="75" width="79" height="30"/>
+                                <rect key="frame" x="501" y="76" width="79" height="30"/>
                                 <state key="normal" title="Rechercher"/>
                                 <connections>
                                     <action selector="search:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qXb-fh-uIr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5I-H2-KTc">
+                                <rect key="frame" x="422" y="76" width="47" height="30"/>
+                                <state key="normal" title="history"/>
+                                <connections>
+                                    <segue destination="4K8-3r-pKq" kind="show" id="a2d-ML-cIo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B70-sX-EX6">
+                                <rect key="frame" x="20" y="76" width="62" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="62" id="cMy-zH-Rla"/>
+                                </constraints>
+                                <state key="normal" title="Localiser"/>
+                                <connections>
+                                    <action selector="locateMe:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dXf-ap-OgZ"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zlN-nf-ofa">
@@ -59,35 +77,22 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5I-H2-KTc">
-                                <rect key="frame" x="320" y="75" width="47" height="30"/>
-                                <state key="normal" title="history"/>
-                                <connections>
-                                    <segue destination="4K8-3r-pKq" kind="show" id="a2d-ML-cIo"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B70-sX-EX6">
-                                <rect key="frame" x="156" y="75" width="62" height="30"/>
-                                <state key="normal" title="Localiser"/>
-                                <connections>
-                                    <action selector="locateMe:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dXf-ap-OgZ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="B70-sX-EX6" firstAttribute="baseline" secondItem="QlG-Jn-qsA" secondAttribute="baseline" id="4df-Vw-bqE"/>
-                            <constraint firstItem="zlN-nf-ofa" firstAttribute="centerX" secondItem="QlG-Jn-qsA" secondAttribute="centerX" id="DRu-rs-cic"/>
                             <constraint firstItem="zlN-nf-ofa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DcK-2D-JGm"/>
+                            <constraint firstItem="bvH-3n-M4v" firstAttribute="leading" secondItem="K5I-H2-KTc" secondAttribute="trailing" constant="32" id="EW1-NE-Heh"/>
+                            <constraint firstItem="QlG-Jn-qsA" firstAttribute="leading" secondItem="B70-sX-EX6" secondAttribute="trailing" constant="37" id="GTX-z3-vkA"/>
+                            <constraint firstItem="B70-sX-EX6" firstAttribute="baseline" secondItem="K5I-H2-KTc" secondAttribute="baseline" id="Glx-Gb-TSR"/>
                             <constraint firstItem="zlN-nf-ofa" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="KpI-EU-GN7"/>
-                            <constraint firstItem="zlN-nf-ofa" firstAttribute="top" secondItem="K5I-H2-KTc" secondAttribute="bottom" constant="13" id="QVl-1A-FKX"/>
-                            <constraint firstItem="QlG-Jn-qsA" firstAttribute="leading" secondItem="B70-sX-EX6" secondAttribute="trailing" constant="8" symbolic="YES" id="Tsh-v8-5Ir"/>
-                            <constraint firstItem="QlG-Jn-qsA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="ap5-1j-NMF"/>
-                            <constraint firstItem="QlG-Jn-qsA" firstAttribute="top" secondItem="bvH-3n-M4v" secondAttribute="top" constant="1" id="hWo-ux-WUH"/>
-                            <constraint firstItem="QlG-Jn-qsA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="o4O-cd-77E"/>
-                            <constraint firstItem="bvH-3n-M4v" firstAttribute="leading" secondItem="QlG-Jn-qsA" secondAttribute="trailing" constant="8" id="s6O-z4-VJ4"/>
-                            <constraint firstItem="K5I-H2-KTc" firstAttribute="baseline" secondItem="bvH-3n-M4v" secondAttribute="baseline" id="vfh-ju-Pdu"/>
-                            <constraint firstItem="bvH-3n-M4v" firstAttribute="leading" secondItem="K5I-H2-KTc" secondAttribute="trailing" constant="14" id="yxi-tv-dAx"/>
+                            <constraint firstItem="QlG-Jn-qsA" firstAttribute="centerX" secondItem="zlN-nf-ofa" secondAttribute="centerX" id="RJI-Zi-Vte"/>
+                            <constraint firstItem="QlG-Jn-qsA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VXZ-0p-uNg"/>
+                            <constraint firstItem="bvH-3n-M4v" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="XNf-Yo-O7c"/>
+                            <constraint firstItem="zlN-nf-ofa" firstAttribute="top" secondItem="B70-sX-EX6" secondAttribute="bottom" constant="12" id="Zx3-hI-tIf"/>
+                            <constraint firstItem="K5I-H2-KTc" firstAttribute="baseline" secondItem="bvH-3n-M4v" secondAttribute="baseline" id="dNd-GP-R7a"/>
+                            <constraint firstItem="B70-sX-EX6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="edX-8a-Wga"/>
+                            <constraint firstItem="QlG-Jn-qsA" firstAttribute="top" secondItem="K5I-H2-KTc" secondAttribute="top" id="rBw-Xk-D8r"/>
+                            <constraint firstItem="B70-sX-EX6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ujz-Zi-EDe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My_Swift_Meteo" id="2sy-6m-ddY"/>
@@ -221,6 +226,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OWO-uV-Afk"/>
+        <segue reference="vsb-Wr-9hB"/>
     </inferredMetricsTieBreakers>
 </document>
