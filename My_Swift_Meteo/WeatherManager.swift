@@ -12,18 +12,21 @@ import SwiftyJSON
 
 public class WeatherManager {
   
-  private static var API_KEY: String? = nil
-  internal static var lang: String? = nil
+  private var API_KEY: String? = nil
+  internal var lang: String? = nil
   
-  public class func setAPIKEY(key: String) {
-    self.API_KEY = key
+  init (apiKey: String, lang: String? = nil) {
+    self.API_KEY = apiKey
+    if let lang = lang {
+      setLang(lang)
+    }
   }
   
-  public class func setLang(lang: String) {
+  public func setLang(lang: String) {
     self.lang = lang
   }
   
-  public class func getWeatherDataFor(city: String, completion: (JSON -> Void)) {
+  public func getWeatherDataFor(city: String, completion: (JSON -> Void)) {
     if self.API_KEY != nil {
       Alamofire.request(.GET, "http://api.openweathermap.org/data/2.5/weather?q=\(city)&units=metric&APPID=\(self.API_KEY!)&lang=\(lang ?? "en")").validate().responseJSON { response in
         switch response.result {
@@ -40,7 +43,7 @@ public class WeatherManager {
     }
   }
 
-  public class func getWeatherDataFromGeographicCoordinates(latidute lat: Double, longitude lon: Double, completion: (JSON -> Void)) {
+  public func getWeatherDataFromGeographicCoordinates(latidute lat: Double, longitude lon: Double, completion: (JSON -> Void)) {
     if self.API_KEY != nil {
       Alamofire.request(.GET, "http://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&units=metric&APPID=\(self.API_KEY!)&lang=\(lang ?? "en")").validate().responseJSON { response in
         switch response.result {

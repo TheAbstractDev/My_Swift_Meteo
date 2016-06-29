@@ -14,7 +14,7 @@ public class LocationManager: NSObject, CLLocationManagerDelegate {
   public static let sharedInstance = LocationManager()
   private let locationManager = CLLocationManager()
   
-  private var currentPosition = [String: Double]()
+  private var currentPosition = [String: AnyObject]()
   public var locationServiceIsEnabled: Bool!
 
   override init () {
@@ -30,17 +30,25 @@ public class LocationManager: NSObject, CLLocationManagerDelegate {
     }
   }
   
-  public class func getCurrentLocation() -> [String:Double] {
+  public class func configure() {
+    getCurrentLocation()
+  }
+  
+  public class func getCurrentLocation() -> [String: AnyObject] {
     return self.sharedInstance.currentPosition
   }
   
   @objc public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     self.locationManager.stopUpdatingLocation()
     let location: CLLocationCoordinate2D = manager.location!.coordinate
-    
-    self.currentPosition = [
-      "latitude": location.latitude,
-      "longitude": location.longitude
-    ]
+    CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: location.latitude, longitude: location.longitude)) { (placemarks, error) in
+      if placemarks?.count > 0 {
+        self.currentPosition = [
+          "latitude": location.latitude,
+          "longitude": location.longitude,
+          "cityName": placemarks![0].locality!
+        ]
+      }
+    }
   }
 }

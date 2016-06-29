@@ -11,12 +11,13 @@ import UIKit
 class ViewController: UIViewController {
 
   @IBOutlet weak var searchTextField: UITextField!
+  var weatherManager: WeatherManager!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.hideKeyboardWhenTappedAround()
-    WeatherManager.setAPIKEY("d38bcc15234a2813634decf8330571a5")
-    WeatherManager.setLang("fr")
-    LocationManager.getCurrentLocation()
+    weatherManager = WeatherManager(apiKey: "d38bcc15234a2813634decf8330571a5", lang: "fr")
+    LocationManager.configure()
   }
   
   @IBAction func locateMe(sender: AnyObject) {
@@ -40,10 +41,10 @@ class ViewController: UIViewController {
     if let identifier = segue.identifier {
       if identifier == "weatherByLocation" {
         let currentLocation = LocationManager.getCurrentLocation()
-        if currentLocation["latitude"] != nil && currentLocation["latitude"] != nil {
-          WeatherManager.getWeatherDataFromGeographicCoordinates(latidute: currentLocation["latitude"]!, longitude: currentLocation["longitude"]!) { (data) in
+        if currentLocation["latitude"] != nil && currentLocation["latitude"] != nil && currentLocation["cityName"] != nil {
+          weatherManager.getWeatherDataFromGeographicCoordinates(latidute: Double(currentLocation["latitude"]!.stringValue)!, longitude: Double(currentLocation["longitude"]!.stringValue)!) { (data) in
             let temp = data["main"]["temp"].intValue
-            let city = data["name"].stringValue
+            let city = currentLocation["cityName"]! as! String
             let descr = data["weather"][0]["description"].stringValue
             
             let nav = segue.destinationViewController
@@ -58,7 +59,7 @@ class ViewController: UIViewController {
       if identifier == "weatherBySearch" {
         if searchTextField.text != "" {
           HistoryManager.saveToSearchHistory(city: searchTextField.text!)
-          WeatherManager.getWeatherDataFor(self.searchTextField.text!) { (data) in
+          weatherManager.getWeatherDataFor(self.searchTextField.text!) { (data) in
             let temp = data["main"]["temp"].intValue
             let city = data["name"].stringValue
             let descr = data["weather"][0]["description"].stringValue

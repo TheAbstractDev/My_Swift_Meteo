@@ -9,7 +9,6 @@
 import UIKit
 
 public class FavoritesManager {
-  
   public class func saveCityToFavorites(city: String) {
     let favorites = SwiftyDefaults.objectForKey("favorites")
     var data = Array<String>()
