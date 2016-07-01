@@ -99,5 +99,4 @@ class HistoryViewController: UITableViewController {
       }
     }
   }
-  
 }
