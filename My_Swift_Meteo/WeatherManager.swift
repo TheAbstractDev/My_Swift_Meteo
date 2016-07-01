@@ -15,6 +15,19 @@ public class WeatherManager {
   private var API_KEY: String? = nil
   internal var lang: String? = nil
   
+  public enum WeatherType {
+    case Sunny
+    case Rainy
+    case Snowy
+    case Windy
+    case Cloudy
+    case Clear
+    case Drizzle
+    case Thunderstorm
+    case Haze
+    case None
+  }
+  
   init (apiKey: String, lang: String? = nil) {
     self.API_KEY = apiKey
     if let lang = lang {

@@ -8,6 +8,7 @@ target 'My_Swift_Meteo' do
   # Pods for My_Swift_Meteo
   pod 'Alamofire', '~> 3.4'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+  pod 'ChameleonFramework/Swift'
 end
 
 target 'My_Swift_Meteo Extension' do

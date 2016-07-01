@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ChameleonFramework.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-My_Swift_Meteo Extension.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,17 +32,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>364ACADCEFA6803CC455F7614BD1981B</key>
+		<key>4B84D58E75D69299FCE80D061CF96776</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5172ACAB7FEA22813859DC97CA0AA16F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>55FD1046621E17448856337908845E97</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F0B5EE044B77E06867C2B335115CE9FA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

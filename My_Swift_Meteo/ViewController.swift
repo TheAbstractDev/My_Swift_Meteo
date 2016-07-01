@@ -12,11 +12,12 @@ class ViewController: UIViewController {
 
   @IBOutlet weak var searchTextField: UITextField!
   var weatherManager: WeatherManager!
+  typealias Weather = WeatherManager.WeatherType
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.hideKeyboardWhenTappedAround()
-    weatherManager = WeatherManager(apiKey: "d38bcc15234a2813634decf8330571a5", lang: "fr")
+    weatherManager = WeatherManager(apiKey: "d38bcc15234a2813634decf8330571a5")
     LocationManager.configure()
   }
   
@@ -27,7 +28,7 @@ class ViewController: UIViewController {
   }
 
   @IBAction func search(sender: AnyObject) {
-    HistoryManager.saveToSearchHistory(city: searchTextField.text!)
+    HistoryManager.saveToSearchHistory(city: searchTextField.text!.replace(" ", by: "-"))
     dispatch_async(dispatch_get_main_queue(), {
       self.performSegueWithIdentifier("weatherBySearch", sender: nil)
     })
@@ -42,6 +43,7 @@ class ViewController: UIViewController {
     if let identifier = segue.identifier {
       if identifier == "weatherByLocation" {
         let currentLocation = LocationManager.getCurrentLocation()
+        
         if currentLocation["latitude"] != nil && currentLocation["latitude"] != nil && currentLocation["cityName"] != nil {
           weatherManager.getWeatherDataFromGeographicCoordinates(latidute: Double(currentLocation["latitude"]!.stringValue)!, longitude: Double(currentLocation["longitude"]!.stringValue)!) { (data) in
             let temp = data["main"]["temp"].intValue
@@ -53,13 +55,51 @@ class ViewController: UIViewController {
             destinationVC.cityLabel.text = city
             destinationVC.tempLabel.text = "\(temp)°C"
             destinationVC.descrLabel.text = descr
+            
+            if descr.rangeOfString("clouds") != nil {
+              destinationVC.setBackground(Weather.Cloudy)
+            }
+            
+            if descr.rangeOfString("rain") != nil {
+              destinationVC.setBackground(Weather.Rainy)
+            }
+            
+            if descr.rangeOfString("thunderstorm") != nil {
+              destinationVC.setBackground(Weather.Thunderstorm)
+            }
+            
+            if descr.rangeOfString("snow") != nil {
+              destinationVC.setBackground(Weather.Snowy)
+            }
+            
+            if descr.rangeOfString("drizzle") != nil {
+              destinationVC.setBackground(Weather.Drizzle)
+            }
+            
+            if descr.rangeOfString("wind") != nil {
+              destinationVC.setBackground(Weather.Windy)
+            }
+            
+            if descr.rangeOfString("clear") != nil {
+              destinationVC.setBackground(Weather.Clear)
+            }
+            
+            if descr.rangeOfString("sun") != nil {
+              destinationVC.setBackground(Weather.Sunny)
+            }
+            
+            if descr.rangeOfString("haze") != nil {
+              destinationVC.setBackground(Weather.Haze)
+            }
           }
         }
       }
       
       if identifier == "weatherBySearch" {
         if searchTextField.text != "" {
-          weatherManager.getWeatherDataFor(self.searchTextField.text!) { (data) in
+          let cityWithDash = self.searchTextField.text!.replace(" ", by: "-")
+          
+          weatherManager.getWeatherDataFor(cityWithDash) { (data) in
             let temp = data["main"]["temp"].intValue
             let city = data["name"].stringValue
             let descr = data["weather"][0]["description"].stringValue
@@ -69,6 +109,42 @@ class ViewController: UIViewController {
             destinationVC.cityLabel.text = city
             destinationVC.tempLabel.text = "\(temp)°C"
             destinationVC.descrLabel.text = descr
+            
+            if descr.rangeOfString("clouds") != nil {
+              destinationVC.setBackground(Weather.Cloudy)
+            }
+            
+            if descr.rangeOfString("rain") != nil {
+              destinationVC.setBackground(Weather.Rainy)
+            }
+            
+            if descr.rangeOfString("thunderstorm") != nil {
+              destinationVC.setBackground(Weather.Thunderstorm)
+            }
+            
+            if descr.rangeOfString("snow") != nil {
+              destinationVC.setBackground(Weather.Snowy)
+            }
+            
+            if descr.rangeOfString("drizzle") != nil {
+              destinationVC.setBackground(Weather.Drizzle)
+            }
+            
+            if descr.rangeOfString("wind") != nil {
+              destinationVC.setBackground(Weather.Windy)
+            }
+            
+            if descr.rangeOfString("clear") != nil {
+              destinationVC.setBackground(Weather.Clear)
+            }
+            
+            if descr.rangeOfString("sun") != nil {
+              destinationVC.setBackground(Weather.Sunny)
+            }
+            
+            if descr.rangeOfString("haze") != nil {
+              destinationVC.setBackground(Weather.Haze)
+            }
           }
         }
       }
@@ -96,6 +172,10 @@ extension String {
   }
   var uppercaseFirst: String {
     return first.uppercaseString + String(characters.dropFirst())
+  }
+  
+  func replace(character: String, by: String) -> String {
+    return self.stringByReplacingOccurrencesOfString(character, withString: by)
   }
 }
 
