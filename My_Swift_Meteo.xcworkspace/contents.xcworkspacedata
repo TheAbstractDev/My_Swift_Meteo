@@ -5,6 +5,9 @@
       location = "group:My_Swift_Meteo.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:My_Swift_Meteo_Server/My_Swift_Meteo_Server.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

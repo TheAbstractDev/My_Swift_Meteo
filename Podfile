@@ -2,13 +2,12 @@
 platform :ios, '8.0'
 
 target 'My_Swift_Meteo' do
-  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for My_Swift_Meteo
   pod 'Alamofire', '~> 3.4'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
   pod 'ChameleonFramework/Swift'
+  pod 'SwiftyBeaver'
 end
 
 target 'My_Swift_Meteo Extension' do
@@ -16,4 +15,5 @@ target 'My_Swift_Meteo Extension' do
   
   pod 'Alamofire', '~> 3.4'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+  pod 'SwiftyBeaver'
 end

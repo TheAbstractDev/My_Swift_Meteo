@@ -7,17 +7,24 @@
 //
 
 import UIKit
+import SwiftyBeaver
 
 class ViewController: UIViewController {
 
   @IBOutlet weak var searchTextField: UITextField!
   var weatherManager: WeatherManager!
   typealias Weather = WeatherManager.WeatherType
+  let log = SwiftyBeaver.self
+  let console = ConsoleDestination()
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    console.detailOutput = false
+    console.dateFormat = "HH:mm:ss"
+    log.removeAllDestinations()
+    log.addDestination(console)
     self.hideKeyboardWhenTappedAround()
-    weatherManager = WeatherManager(apiKey: "d38bcc15234a2813634decf8330571a5")
+    weatherManager = WeatherManager(apiKey: "650e2a6cd7d34c84905105743162507")
     LocationManager.configure()
   }
   
@@ -43,108 +50,40 @@ class ViewController: UIViewController {
     if let identifier = segue.identifier {
       if identifier == "weatherByLocation" {
         let currentLocation = LocationManager.getCurrentLocation()
-        
-        if currentLocation["latitude"] != nil && currentLocation["latitude"] != nil && currentLocation["cityName"] != nil {
-          weatherManager.getWeatherDataFromGeographicCoordinates(latidute: Double(currentLocation["latitude"]!.stringValue)!, longitude: Double(currentLocation["longitude"]!.stringValue)!) { (data) in
-            let temp = data["main"]["temp"].intValue
-            let city = currentLocation["cityName"]! as! String
-            let descr = data["weather"][0]["description"].stringValue
+        if currentLocation["cityName"] != nil {
+          weatherManager.getWeatherDataFor(currentLocation["cityName"] as! String) { (data) in
+            let temp = data["current"]["temp_c"].intValue
+            let city = data["location"]["name"].stringValue
+            let descr = data["current"]["condition"]["text"].stringValue
+            let isDay = data["current"]["is_day"].intValue
             
             let nav = segue.destinationViewController
             let destinationVC = nav as! WeatherViewController
             destinationVC.cityLabel.text = city
             destinationVC.tempLabel.text = "\(temp)°C"
             destinationVC.descrLabel.text = descr
-            
-            if descr.rangeOfString("clouds") != nil {
-              destinationVC.setBackground(Weather.Cloudy)
-            }
-            
-            if descr.rangeOfString("rain") != nil {
-              destinationVC.setBackground(Weather.Rainy)
-            }
-            
-            if descr.rangeOfString("thunderstorm") != nil {
-              destinationVC.setBackground(Weather.Thunderstorm)
-            }
-            
-            if descr.rangeOfString("snow") != nil {
-              destinationVC.setBackground(Weather.Snowy)
-            }
-            
-            if descr.rangeOfString("drizzle") != nil {
-              destinationVC.setBackground(Weather.Drizzle)
-            }
-            
-            if descr.rangeOfString("wind") != nil {
-              destinationVC.setBackground(Weather.Windy)
-            }
-            
-            if descr.rangeOfString("clear") != nil {
-              destinationVC.setBackground(Weather.Clear)
-            }
-            
-            if descr.rangeOfString("sun") != nil {
-              destinationVC.setBackground(Weather.Sunny)
-            }
-            
-            if descr.rangeOfString("haze") != nil {
-              destinationVC.setBackground(Weather.Haze)
-            }
+            destinationVC.setBackground(self.weatherManager.weatherCondition(descr), isDay: isDay)
           }
         }
       }
       
       if identifier == "weatherBySearch" {
         if searchTextField.text != "" {
-          let cityWithDash = self.searchTextField.text!.replace(" ", by: "-")
+          var city = self.searchTextField.text!.replace(" ", by: "-")
+          city = city.replace("é", by: "e")
           
-          weatherManager.getWeatherDataFor(cityWithDash) { (data) in
-            let temp = data["main"]["temp"].intValue
-            let city = data["name"].stringValue
-            let descr = data["weather"][0]["description"].stringValue
+          weatherManager.getWeatherDataFor(city) { (data) in
+            let temp = data["current"]["temp_c"].intValue
+            let city = data["location"]["name"].stringValue
+            let descr = data["current"]["condition"]["text"].stringValue
+            let isDay = data["current"]["is_day"].intValue
             
             let nav = segue.destinationViewController
             let destinationVC = nav as! WeatherViewController
             destinationVC.cityLabel.text = city
             destinationVC.tempLabel.text = "\(temp)°C"
             destinationVC.descrLabel.text = descr
-            
-            if descr.rangeOfString("clouds") != nil {
-              destinationVC.setBackground(Weather.Cloudy)
-            }
-            
-            if descr.rangeOfString("rain") != nil {
-              destinationVC.setBackground(Weather.Rainy)
-            }
-            
-            if descr.rangeOfString("thunderstorm") != nil {
-              destinationVC.setBackground(Weather.Thunderstorm)
-            }
-            
-            if descr.rangeOfString("snow") != nil {
-              destinationVC.setBackground(Weather.Snowy)
-            }
-            
-            if descr.rangeOfString("drizzle") != nil {
-              destinationVC.setBackground(Weather.Drizzle)
-            }
-            
-            if descr.rangeOfString("wind") != nil {
-              destinationVC.setBackground(Weather.Windy)
-            }
-            
-            if descr.rangeOfString("clear") != nil {
-              destinationVC.setBackground(Weather.Clear)
-            }
-            
-            if descr.rangeOfString("sun") != nil {
-              destinationVC.setBackground(Weather.Sunny)
-            }
-            
-            if descr.rangeOfString("haze") != nil {
-              destinationVC.setBackground(Weather.Haze)
-            }
+            destinationVC.setBackground(self.weatherManager.weatherCondition(descr), isDay: isDay)
           }
         }
       }
