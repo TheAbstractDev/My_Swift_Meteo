@@ -31,8 +31,8 @@ class WeatherViewController: UIViewController {
       // Dispose of any resources that can be recreated.
   }
   
-  func setBackground(weatherType: WeatherManager.WeatherType, isDay: Int) {
-    if isDay == 1 {
+  func setBackground(weatherType: WeatherManager.WeatherType, isDay: String) {
+    if isDay == "1" {
       switch weatherType {
       case .Clear:
         let colors:[UIColor] = [
@@ -100,7 +100,7 @@ class WeatherViewController: UIViewController {
       default:
         break
       }
-    } else {
+    } else if isDay == "0" {
       switch weatherType {
       case .Clear:
         let colors:[UIColor] = [

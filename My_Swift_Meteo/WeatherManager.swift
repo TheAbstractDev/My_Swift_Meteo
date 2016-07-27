@@ -11,10 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 public class WeatherManager {
-  
-  private var API_KEY: String? = nil
-  internal var lang: String? = nil
-  internal var BASE_URL = "http://api.apixu.com/v1/current.json"
+  private static var BASE_URL = "http://10.34.1.217:4000"
   
   public enum WeatherType {
     case Sunny
@@ -29,35 +26,20 @@ public class WeatherManager {
     case None
   }
   
-  init (apiKey: String, lang: String? = nil) {
-    self.API_KEY = apiKey
-    if let lang = lang {
-      setLang(lang)
-    }
-  }
-  
-  public func setLang(lang: String) {
-    self.lang = lang
-  }
-  
-  public func getWeatherDataFor(city: String, completion: (JSON -> Void)) {
-    if self.API_KEY != nil {
-      Alamofire.request(.GET, "\(BASE_URL)?key=\(self.API_KEY!)&q=\(city)").validate().responseJSON { response in
-        switch response.result {
-        case .Success:
-          if let value = response.result.value {
-            completion(JSON(value))
-          }
-        case .Failure(let error):
-          completion(JSON(error))
+  public class func getWeatherDataFor(city: String, completion: (JSON -> Void)) {
+    Alamofire.request(.GET, "\(BASE_URL)/weather?city=\(city)").validate().responseJSON { response in
+      switch response.result {
+      case .Success:
+        if let value = response.result.value {
+          completion(JSON(value))
         }
+      case .Failure(let error):
+        completion(JSON(error))
       }
-    } else {
-      print("Error: Your API key is not defined")
     }
   }
   
-  public func weatherCondition(weather: String) -> WeatherType {
+  public class func weatherCondition(weather: String) -> WeatherType {
     if weather.lowercaseString.rangeOfString("cloud") != nil {
       return WeatherType.Cloudy
     }

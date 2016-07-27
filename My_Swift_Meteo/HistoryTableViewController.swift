@@ -12,12 +12,10 @@ class HistoryViewController: UITableViewController {
 
   var history = Array<String>()
   var city: String = ""
-  var weatherManager: WeatherManager!
   typealias Weather = WeatherManager.WeatherType
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    weatherManager = WeatherManager(apiKey: "d38bcc15234a2813634decf8330571a5")
     history = HistoryManager.getSearchHistory()
   }
 
@@ -49,18 +47,18 @@ class HistoryViewController: UITableViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if let identifier = segue.identifier {
       if identifier == "weatherByHistory" {
-        weatherManager.getWeatherDataFor(self.city) { (data) in
-          let temp = data["current"]["temp_c"].intValue
-          let city = data["location"]["name"].stringValue
-          let descr = data["current"]["condition"]["text"].stringValue
-          let isDay = data["current"]["is_day"].intValue
+        WeatherManager.getWeatherDataFor(self.city) { (data) in
+          let temp = data["temperature"].stringValue
+          let city = data["city"].stringValue
+          let descr = data["description"].stringValue
+          let isDay = data["is_day"].stringValue
           
           let nav = segue.destinationViewController
           let destinationVC = nav as! WeatherViewController
           destinationVC.cityLabel.text = city
           destinationVC.tempLabel.text = "\(temp)°C"
           destinationVC.descrLabel.text = descr
-          destinationVC.setBackground(self.weatherManager.weatherCondition(descr), isDay: isDay)
+          destinationVC.setBackground(WeatherManager.weatherCondition(descr), isDay: isDay)
         }
       }
     }

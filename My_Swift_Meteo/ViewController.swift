@@ -12,7 +12,6 @@ import SwiftyBeaver
 class ViewController: UIViewController {
 
   @IBOutlet weak var searchTextField: UITextField!
-  var weatherManager: WeatherManager!
   typealias Weather = WeatherManager.WeatherType
   let log = SwiftyBeaver.self
   let console = ConsoleDestination()
@@ -24,7 +23,6 @@ class ViewController: UIViewController {
     log.removeAllDestinations()
     log.addDestination(console)
     self.hideKeyboardWhenTappedAround()
-    weatherManager = WeatherManager(apiKey: "650e2a6cd7d34c84905105743162507")
     LocationManager.configure()
   }
   
@@ -51,18 +49,18 @@ class ViewController: UIViewController {
       if identifier == "weatherByLocation" {
         let currentLocation = LocationManager.getCurrentLocation()
         if currentLocation["cityName"] != nil {
-          weatherManager.getWeatherDataFor(currentLocation["cityName"] as! String) { (data) in
-            let temp = data["current"]["temp_c"].intValue
-            let city = data["location"]["name"].stringValue
-            let descr = data["current"]["condition"]["text"].stringValue
-            let isDay = data["current"]["is_day"].intValue
+          WeatherManager.getWeatherDataFor(currentLocation["cityName"] as! String) { (data) in
+            let temp = data["temperature"].stringValue
+            let city = data["city"].stringValue
+            let descr = data["description"].stringValue
+            let isDay = data["is_day"].stringValue
             
             let nav = segue.destinationViewController
             let destinationVC = nav as! WeatherViewController
             destinationVC.cityLabel.text = city
             destinationVC.tempLabel.text = "\(temp)°C"
             destinationVC.descrLabel.text = descr
-            destinationVC.setBackground(self.weatherManager.weatherCondition(descr), isDay: isDay)
+            destinationVC.setBackground(WeatherManager.weatherCondition(descr), isDay: isDay)
           }
         }
       }
@@ -72,18 +70,18 @@ class ViewController: UIViewController {
           var city = self.searchTextField.text!.replace(" ", by: "-")
           city = city.replace("é", by: "e")
           
-          weatherManager.getWeatherDataFor(city) { (data) in
-            let temp = data["current"]["temp_c"].intValue
-            let city = data["location"]["name"].stringValue
-            let descr = data["current"]["condition"]["text"].stringValue
-            let isDay = data["current"]["is_day"].intValue
+          WeatherManager.getWeatherDataFor(city) { (data) in
+            let temp = data["temperature"].stringValue
+            let city = data["city"].stringValue
+            let descr = data["description"].stringValue
+            let isDay = data["is_day"].stringValue
             
             let nav = segue.destinationViewController
             let destinationVC = nav as! WeatherViewController
             destinationVC.cityLabel.text = city
             destinationVC.tempLabel.text = "\(temp)°C"
             destinationVC.descrLabel.text = descr
-            destinationVC.setBackground(self.weatherManager.weatherCondition(descr), isDay: isDay)
+            destinationVC.setBackground(WeatherManager.weatherCondition(descr), isDay: isDay)
           }
         }
       }

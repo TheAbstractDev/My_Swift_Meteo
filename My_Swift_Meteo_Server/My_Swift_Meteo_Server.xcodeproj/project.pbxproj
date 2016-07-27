@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		76F2BF4EE675C21A120091F5 /* Pods_My_Swift_Meteo_Server.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05123630E7E48C914DA519C6 /* Pods_My_Swift_Meteo_Server.framework */; };
 		9609B4EA1C5FC19B00141FAB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9609B4E91C5FC19B00141FAB /* main.swift */; };
 		968A3BB21C639C8900E4AFCC /* Express.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968A3BB11C639C8900E4AFCC /* Express.framework */; };
 		968A3BB31C639C8900E4AFCC /* Express.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 968A3BB11C639C8900E4AFCC /* Express.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -28,6 +29,7 @@
 		96E0C04F1C6D435B00CA926F /* PathToRegex.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96E0C04C1C6D435B00CA926F /* PathToRegex.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		96E0C0501C6D435B00CA926F /* Regex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96E0C04D1C6D435B00CA926F /* Regex.framework */; };
 		96E0C0511C6D435B00CA926F /* Regex.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96E0C04D1C6D435B00CA926F /* Regex.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D85FEB4E1D47AC7E005F7AFD /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85FEB4D1D47AC7E005F7AFD /* WeatherManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,6 +56,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		05123630E7E48C914DA519C6 /* Pods_My_Swift_Meteo_Server.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_My_Swift_Meteo_Server.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		05503AA7EF938D824CE6C30A /* Pods-My_Swift_Meteo_Server.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My_Swift_Meteo_Server.release.xcconfig"; path = "Pods/Target Support Files/Pods-My_Swift_Meteo_Server/Pods-My_Swift_Meteo_Server.release.xcconfig"; sourceTree = "<group>"; };
 		9609B4D91C5FC0DC00141FAB /* My_Swift_Meteo_Server.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = My_Swift_Meteo_Server.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9609B4E31C5FC0DC00141FAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9609B4E91C5FC19B00141FAB /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -68,6 +72,8 @@
 		96AB7D1C1C80E00900F638F9 /* PathKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PathKit.framework; path = Carthage/Build/Mac/PathKit.framework; sourceTree = "<group>"; };
 		96E0C04C1C6D435B00CA926F /* PathToRegex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PathToRegex.framework; path = Carthage/Build/Mac/PathToRegex.framework; sourceTree = "<group>"; };
 		96E0C04D1C6D435B00CA926F /* Regex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Regex.framework; path = Carthage/Build/Mac/Regex.framework; sourceTree = "<group>"; };
+		9EEFBF1FB7E12C9CB850E881 /* Pods-My_Swift_Meteo_Server.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My_Swift_Meteo_Server.debug.xcconfig"; path = "Pods/Target Support Files/Pods-My_Swift_Meteo_Server/Pods-My_Swift_Meteo_Server.debug.xcconfig"; sourceTree = "<group>"; };
+		D85FEB4D1D47AC7E005F7AFD /* WeatherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,12 +91,22 @@
 				968A3BC51C63A56D00E4AFCC /* Result.framework in Frameworks */,
 				96AB7D1D1C80E00900F638F9 /* PathKit.framework in Frameworks */,
 				96AB7D171C80DFBE00F638F9 /* Stencil.framework in Frameworks */,
+				76F2BF4EE675C21A120091F5 /* Pods_My_Swift_Meteo_Server.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		384FD0CB05DA07EF87ABEEBA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9EEFBF1FB7E12C9CB850E881 /* Pods-My_Swift_Meteo_Server.debug.xcconfig */,
+				05503AA7EF938D824CE6C30A /* Pods-My_Swift_Meteo_Server.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9609B4D01C5FC0DC00141FAB = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +115,7 @@
 				9609B4DA1C5FC0DC00141FAB /* Products */,
 				9609B4E31C5FC0DC00141FAB /* Info.plist */,
 				9609B4F11C5FC51A00141FAB /* Cartfile */,
+				384FD0CB05DA07EF87ABEEBA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				9609B4E91C5FC19B00141FAB /* main.swift */,
+				D85FEB4D1D47AC7E005F7AFD /* WeatherManager.swift */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -131,6 +149,7 @@
 				96E0C04C1C6D435B00CA926F /* PathToRegex.framework */,
 				968A3BC41C63A56D00E4AFCC /* Result.framework */,
 				968A3BC11C63A55D00E4AFCC /* Mustache.framework */,
+				05123630E7E48C914DA519C6 /* Pods_My_Swift_Meteo_Server.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -142,10 +161,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9609B4E61C5FC0DC00141FAB /* Build configuration list for PBXNativeTarget "My_Swift_Meteo_Server" */;
 			buildPhases = (
+				447EAF9ECF9192EAB0E9D5FE /* 📦 Check Pods Manifest.lock */,
 				9609B4D51C5FC0DC00141FAB /* Sources */,
 				9609B4D61C5FC0DC00141FAB /* Frameworks */,
 				9609B4D71C5FC0DC00141FAB /* Resources */,
 				968A3BB41C639C8900E4AFCC /* Embed Frameworks */,
+				199E71A05096E8750E82D711 /* 📦 Embed Pods Frameworks */,
+				03385CC33CC09B22CB9B9233 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -199,11 +221,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		03385CC33CC09B22CB9B9233 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-My_Swift_Meteo_Server/Pods-My_Swift_Meteo_Server-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		199E71A05096E8750E82D711 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-My_Swift_Meteo_Server/Pods-My_Swift_Meteo_Server-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		447EAF9ECF9192EAB0E9D5FE /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9609B4D51C5FC0DC00141FAB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D85FEB4E1D47AC7E005F7AFD /* WeatherManager.swift in Sources */,
 				9609B4EA1C5FC19B00141FAB /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,6 +380,7 @@
 		};
 		9609B4E71C5FC0DC00141FAB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EEFBF1FB7E12C9CB850E881 /* Pods-My_Swift_Meteo_Server.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -328,6 +400,7 @@
 		};
 		9609B4E81C5FC0DC00141FAB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05503AA7EF938D824CE6C30A /* Pods-My_Swift_Meteo_Server.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
