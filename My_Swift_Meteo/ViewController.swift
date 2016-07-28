@@ -50,17 +50,31 @@ class ViewController: UIViewController {
         let currentLocation = LocationManager.getCurrentLocation()
         if currentLocation["cityName"] != nil {
           WeatherManager.getWeatherDataFor(currentLocation["cityName"] as! String) { (data) in
-            let temp = data["temperature"].stringValue
-            let city = data["city"].stringValue
-            let descr = data["description"].stringValue
-            let isDay = data["is_day"].stringValue
-            
-            let nav = segue.destinationViewController
-            let destinationVC = nav as! WeatherViewController
-            destinationVC.cityLabel.text = city
-            destinationVC.tempLabel.text = "\(temp)°C"
-            destinationVC.descrLabel.text = descr
-            destinationVC.setBackground(WeatherManager.weatherCondition(descr), isDay: isDay)
+            if data.count > 0 {
+              let temp = data["temperature_c"].stringValue
+              let city = data["city"].stringValue
+              let country = data["country"].stringValue
+              let descr = data["description"].stringValue
+              let isDay = data["is_day"].stringValue
+              let feelsLike = data["feels_like_c"].stringValue
+              let iconUrl = data["icon_url"].stringValue
+              let humidiy = data["humidity"].stringValue
+              
+              let nav = segue.destinationViewController
+              let destinationVC = nav as! WeatherViewController
+              destinationVC.cityLabel.text = city
+              destinationVC.countryLabel.text = country
+              destinationVC.imageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: iconUrl)!)!)
+              destinationVC.feelsLikeLabel.text = "\(feelsLike)°C"
+              destinationVC.humidityLabel.text = "\(humidiy)%"
+              destinationVC.tempLabel.text = "\(temp)°C"
+              destinationVC.descrLabel.text = descr
+              destinationVC.setBackground(WeatherManager.weatherCondition(descr), isDay: isDay)
+            } else {
+              let alertCtlr = UIAlertController(title: "Erreur", message: "Aucunes données trouvés. Réessayez avec une autre ville / orthographe.", preferredStyle: UIAlertControllerStyle.Alert)
+              alertCtlr.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+              self.presentViewController(alertCtlr, animated: true, completion: nil)
+            }
           }
         }
       }
@@ -71,17 +85,31 @@ class ViewController: UIViewController {
           city = city.replace("é", by: "e")
           
           WeatherManager.getWeatherDataFor(city) { (data) in
-            let temp = data["temperature"].stringValue
-            let city = data["city"].stringValue
-            let descr = data["description"].stringValue
-            let isDay = data["is_day"].stringValue
-            
-            let nav = segue.destinationViewController
-            let destinationVC = nav as! WeatherViewController
-            destinationVC.cityLabel.text = city
-            destinationVC.tempLabel.text = "\(temp)°C"
-            destinationVC.descrLabel.text = descr
-            destinationVC.setBackground(WeatherManager.weatherCondition(descr), isDay: isDay)
+            if data.count > 0 {
+              let temp = data["temperature_c"].stringValue
+              let city = data["city"].stringValue
+              let country = data["country"].stringValue
+              let descr = data["description"].stringValue
+              let isDay = data["is_day"].stringValue
+              let feelsLike = data["feels_like_c"].stringValue
+              let iconUrl = data["icon_url"].stringValue
+              let humidiy = data["humidity"].stringValue
+              
+              let nav = segue.destinationViewController
+              let destinationVC = nav as! WeatherViewController
+              destinationVC.cityLabel.text = city
+              destinationVC.countryLabel.text = country
+              destinationVC.imageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: iconUrl)!)!)
+              destinationVC.feelsLikeLabel.text = "\(feelsLike)°C"
+              destinationVC.humidityLabel.text = "\(humidiy)%"
+              destinationVC.tempLabel.text = "\(temp)°C"
+              destinationVC.descrLabel.text = descr
+              destinationVC.setBackground(WeatherManager.weatherCondition(descr), isDay: isDay)
+            } else {
+              let alertCtlr = UIAlertController(title: "Erreur", message: "Aucunes données trouvés. Réessayez avec une autre ville / orthographe.", preferredStyle: UIAlertControllerStyle.Alert)
+              alertCtlr.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+              self.presentViewController(alertCtlr, animated: true, completion: nil)
+            }
           }
         }
       }

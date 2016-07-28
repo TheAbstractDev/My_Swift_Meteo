@@ -13,8 +13,12 @@ import SwiftyBeaver
 class WeatherViewController: UIViewController {
 
   @IBOutlet weak var cityLabel: UILabel!
+  @IBOutlet weak var countryLabel: UILabel!
+  @IBOutlet weak var imageView: UIImageView!
   @IBOutlet weak var descrLabel: UILabel!
   @IBOutlet weak var tempLabel: UILabel!
+  @IBOutlet weak var feelsLikeLabel: UILabel!
+  @IBOutlet weak var humidityLabel: UILabel!
   let log = SwiftyBeaver.self
   let console = ConsoleDestination()
   
@@ -31,7 +35,12 @@ class WeatherViewController: UIViewController {
       // Dispose of any resources that can be recreated.
   }
   
+//  override func preferredStatusBarStyle() -> UIStatusBarStyle {
+//    return UIStatusBarStyle.LightContent
+//  }
+//  
   func setBackground(weatherType: WeatherManager.WeatherType, isDay: String) {
+    log.debug("day: \(isDay), weather: \(weatherType)")
     if isDay == "1" {
       switch weatherType {
       case .Clear:
@@ -48,7 +57,7 @@ class WeatherViewController: UIViewController {
         ]
         view.backgroundColor = GradientColor(.TopToBottom, frame: view.frame, colors: colors)
         break
-      case .Drizzle:
+      case .Mist:
         let colors:[UIColor] = [
           HexColor("C6D3DB"),
           HexColor("87A9BC")
@@ -57,17 +66,17 @@ class WeatherViewController: UIViewController {
         break
       case .Rainy:
         let colors:[UIColor] = [
-          HexColor("FEF29B"),
-          HexColor("9BC9E4")
+          HexColor("C6D3DB"),
+          HexColor("87A9BC")
         ]
         view.backgroundColor = GradientColor(.TopToBottom, frame: view.frame, colors: colors)
         break
       case .Snowy:
         let colors:[UIColor] = [
-          HexColor("FEF29B"),
-          HexColor("9BC9E4")
+          HexColor("B0CBDA"),
+          HexColor("87A9BC")
         ]
-        view.backgroundColor = GradientColor(.TopToBottom, frame: view.frame, colors: colors)
+        view.backgroundColor = GradientColor(.LeftToRight, frame: view.frame, colors: colors)
         break
       case .Sunny:
         let colors:[UIColor] = [
@@ -78,14 +87,14 @@ class WeatherViewController: UIViewController {
         break
       case .Thunderstorm:
         let colors:[UIColor] = [
-          HexColor("FEF29B"),
-          HexColor("9BC9E4")
+          HexColor("C6D3DB"),
+          HexColor("87A9BC")
         ]
         view.backgroundColor = GradientColor(.TopToBottom, frame: view.frame, colors: colors)
         break
       case .Windy:
         let colors:[UIColor] = [
-          HexColor("FEF29B"),
+          HexColor("C6D3DB"),
           HexColor("9BC9E4")
         ]
         view.backgroundColor = GradientColor(.TopToBottom, frame: view.frame, colors: colors)
@@ -111,52 +120,45 @@ class WeatherViewController: UIViewController {
         break
       case .Cloudy:
         let colors:[UIColor] = [
-          HexColor("C6D3DB"),
-          HexColor("5FB9ED")
+          HexColor("677D8A"),
+          HexColor("102541")
         ]
         view.backgroundColor = GradientColor(.TopToBottom, frame: view.frame, colors: colors)
         break
-      case .Drizzle:
+      case .Mist:
         let colors:[UIColor] = [
-          HexColor("C6D3DB"),
-          HexColor("87A9BC")
+          HexColor("808B91"),
+          HexColor("102541")
         ]
         view.backgroundColor = GradientColor(.TopToBottom, frame: view.frame, colors: colors)
         break
       case .Rainy:
         let colors:[UIColor] = [
-          HexColor("FEF29B"),
-          HexColor("9BC9E4")
+          HexColor("A2A2A2"),
+          HexColor("102541")
         ]
         view.backgroundColor = GradientColor(.TopToBottom, frame: view.frame, colors: colors)
         break
       case .Snowy:
         let colors:[UIColor] = [
-          HexColor("FEF29B"),
-          HexColor("9BC9E4")
-        ]
-        view.backgroundColor = GradientColor(.TopToBottom, frame: view.frame, colors: colors)
-        break
-      case .Sunny:
-        let colors:[UIColor] = [
-          HexColor("FEF29B"),
-          HexColor("5FB9ED")
+          HexColor("ECF8FF"),
+          HexColor("102541")
         ]
         view.backgroundColor = GradientColor(.TopToBottom, frame: view.frame, colors: colors)
         break
       case .Thunderstorm:
         let colors:[UIColor] = [
-          HexColor("FEF29B"),
-          HexColor("9BC9E4")
+          HexColor("808B91"),
+          HexColor("102541")
         ]
         view.backgroundColor = GradientColor(.TopToBottom, frame: view.frame, colors: colors)
         break
       case .Windy:
         let colors:[UIColor] = [
-          HexColor("FEF29B"),
-          HexColor("9BC9E4")
+          HexColor("5C666C"),
+          HexColor("102541")
         ]
-        view.backgroundColor = GradientColor(.TopToBottom, frame: view.frame, colors: colors)
+        view.backgroundColor = GradientColor(.LeftToRight, frame: view.frame, colors: colors)
         break
       case .Haze:
         let colors:[UIColor] = [

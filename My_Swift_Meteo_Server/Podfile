@@ -6,4 +6,5 @@ target 'My_Swift_Meteo_Server' do
   pod 'Alamofire', '~> 3.4'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
   pod 'SwiftyBeaver'
+  pod 'SwiftMongoDB'
 end

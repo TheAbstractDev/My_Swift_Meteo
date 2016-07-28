@@ -20,7 +20,7 @@ public class WeatherManager {
     case Windy
     case Cloudy
     case Clear
-    case Drizzle
+    case Mist
     case Thunderstorm
     case Haze
     case None
@@ -56,8 +56,8 @@ public class WeatherManager {
       return WeatherType.Snowy
     }
     
-    if weather.lowercaseString.rangeOfString("drizzle") != nil {
-      return WeatherType.Drizzle
+    if weather.lowercaseString.rangeOfString("mist") != nil {
+      return WeatherType.Mist
     }
     
     if weather.lowercaseString.rangeOfString("wind") != nil {

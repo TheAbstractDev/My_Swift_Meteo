@@ -9,6 +9,7 @@
 import Alamofire
 import SwiftyJSON
 import SwiftyBeaver
+import SwiftMongoDB
 
 public class WeatherManager {
   private var API_KEY: String? = nil

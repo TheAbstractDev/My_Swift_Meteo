@@ -35,4 +35,12 @@ public class HistoryManager {
       return []
     }
   }
+  
+  public class func removeFromFavorites(city:String) {
+    SwiftyDefaults.remove(city, forKey: "history")
+  }
+  
+  public class func removeAll() {
+    SwiftyDefaults.removeAllObjectsForKey("history")
+  }
 }
