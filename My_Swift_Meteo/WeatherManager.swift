@@ -75,6 +75,10 @@ public class WeatherManager {
     if weather.lowercaseString.rangeOfString("haze") != nil {
       return WeatherType.Haze
     }
+    
+    if weather.lowercaseString.rangeOfString("overcast") != nil {
+      return WeatherType.Mist
+    }
     return WeatherType.None
   }
 }

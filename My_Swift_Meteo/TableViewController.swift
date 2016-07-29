@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyBeaver
 
-class ViewController: UIViewController {
+class TableViewController: UITableViewController {
 
   @IBOutlet weak var searchTextField: UITextField!
   typealias Weather = WeatherManager.WeatherType
@@ -33,10 +33,12 @@ class ViewController: UIViewController {
   }
 
   @IBAction func search(sender: AnyObject) {
-    HistoryManager.saveToSearchHistory(city: searchTextField.text!.replace(" ", by: "-"))
-    dispatch_async(dispatch_get_main_queue(), {
-      self.performSegueWithIdentifier("weatherBySearch", sender: nil)
-    })
+    if (searchTextField.text! != "") {
+      HistoryManager.saveToSearchHistory(city: searchTextField.text!.replace(" ", by: "-"))
+      dispatch_async(dispatch_get_main_queue(), {
+        self.performSegueWithIdentifier("weatherBySearch", sender: nil)
+      })
+    }
   }
   
   override func didReceiveMemoryWarning() {
@@ -71,7 +73,7 @@ class ViewController: UIViewController {
               destinationVC.descrLabel.text = descr
               destinationVC.setBackground(WeatherManager.weatherCondition(descr), isDay: isDay)
             } else {
-              let alertCtlr = UIAlertController(title: "Erreur", message: "Aucunes données trouvés. Réessayez avec une autre ville / orthographe.", preferredStyle: UIAlertControllerStyle.Alert)
+              let alertCtlr = UIAlertController(title: "Erreur", message: "Aucunes données trouvés.", preferredStyle: UIAlertControllerStyle.Alert)
               alertCtlr.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
               self.presentViewController(alertCtlr, animated: true, completion: nil)
             }

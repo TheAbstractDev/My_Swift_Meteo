@@ -16,7 +16,7 @@ class HistoryViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    history = HistoryManager.removeAll()
+    history = HistoryManager.getSearchHistory()
   }
 
   override func didReceiveMemoryWarning() {

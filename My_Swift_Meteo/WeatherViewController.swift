@@ -18,6 +18,7 @@ class WeatherViewController: UIViewController {
   @IBOutlet weak var descrLabel: UILabel!
   @IBOutlet weak var tempLabel: UILabel!
   @IBOutlet weak var feelsLikeLabel: UILabel!
+  @IBOutlet weak var saveToFavoritesButton: UIButton!
   @IBOutlet weak var humidityLabel: UILabel!
   let log = SwiftyBeaver.self
   let console = ConsoleDestination()
@@ -28,11 +29,15 @@ class WeatherViewController: UIViewController {
     console.dateFormat = "HH:mm:ss"
     log.removeAllDestinations()
     log.addDestination(console)
+    saveToFavoritesButton.tintColor = UIColor.whiteColor()
   }
 
   override func didReceiveMemoryWarning() {
       super.didReceiveMemoryWarning()
       // Dispose of any resources that can be recreated.
+  }
+  @IBAction func saveToFavorites(sender: AnyObject) {
+    FavoritesManager.saveCityToFavorites(cityLabel.text!)
   }
   
 //  override func preferredStatusBarStyle() -> UIStatusBarStyle {
