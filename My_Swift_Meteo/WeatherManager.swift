@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 public class WeatherManager {
-  private static var BASE_URL = "http://10.34.1.217:4000"
+  private static var BASE_URL = "http://swiftmeteo.localtunnel.me"
   
   public enum WeatherType {
     case Sunny
